@@ -71,7 +71,7 @@ class AuthenticationService {
       await _firebaseAuth.signOut();
       _currentUser = null;
     } catch (e) {
-      return e.message();
+      return e.message;
     }
   }
 }

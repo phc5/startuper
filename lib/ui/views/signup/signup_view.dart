@@ -4,6 +4,7 @@ import 'package:ideabuilder/ui/views/signup/signup_viewmodel.dart';
 import 'package:ideabuilder/ui/shared/ui_helpers.dart';
 import 'package:ideabuilder/ui/widgets/busy_button.dart';
 import 'package:ideabuilder/ui/widgets/input_field.dart';
+import 'package:ideabuilder/ui/widgets/text_link.dart';
 
 class SignUpView extends StatelessWidget {
   final emailController = TextEditingController();
@@ -47,24 +48,41 @@ class SignUpView extends StatelessWidget {
                 controller: passwordController,
                 additionalNote: 'Password has to be a minimum of 6 characters.',
               ),
-              verticalSpaceMedium,
+              verticalSpaceSmall,
+              BusyButton(
+                title: 'Sign Up',
+                busy: model.isBusy,
+                onPressed: () {
+                  model.signUp(
+                    email: emailController.text,
+                    password: passwordController.text,
+                    fullName: fullNameController.text,
+                  );
+                },
+              ),
+              verticalSpaceSmall,
               Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  BusyButton(
-                    title: 'Sign Up',
-                    busy: model.isBusy,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Already have an account? ',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w200,
+                    ),
+                  ),
+                  TextLink(
+                    'Log in',
+                    textStyle: TextStyle(
+                      color: Colors.white,
+                    ),
                     onPressed: () {
-                      model.signUp(
-                        email: emailController.text,
-                        password: passwordController.text,
-                        fullName: fullNameController.text,
-                      );
+                      model.navigateToLogin();
                     },
-                  )
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         ),

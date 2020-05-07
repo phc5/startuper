@@ -42,4 +42,8 @@ class SignUpViewModel extends BaseViewModel {
       );
     }
   }
+
+  Future navigateToLogin() async {
+    await _navigationService.replaceWith(Routes.loginView);
+  }
 }
