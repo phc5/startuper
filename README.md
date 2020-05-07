@@ -17,6 +17,6 @@ This project follows a twist of MVVM without the two way binding by using the [s
 - `Services` provide the functionality of various features your app needs. I create a Service per feature so if I need authentication, I create an [AuthenticationService](https://github.com/phc5/startuper/blob/master/lib/services/authentication.dart). The kind folks at FilledStacks created a packaged called [stacked_services](https://pub.dev/packages/stacked_services) that includes some commonly used functionalities like navigation, dialog, and snackbar. 
 
 
-In our views, we use `ViewModelBuilder` to bind our Views to our ViewModels. `ViewModelBuilder` has two constrcutors: `.reactive()` and `.nonReactive()`. When a function in our ViewModel calls `notifyListeners()`, the Views with the `.reactive()` constructor will react to the changes and rebuild your UI with the newly updated ViewModel state.
+In our views, we use `ViewModelBuilder` to bind our Views to our ViewModels. `ViewModelBuilder` has two constructors: `.reactive()` and `.nonReactive()`. When a function in our ViewModel calls `notifyListeners()`, the Views with the `.reactive()` constructor will react to the changes and rebuild your UI with the newly updated ViewModel state.
 
 There's much more to the `stacked` architecture and I've only scratched the surface. I'm interested to see how well this scales.

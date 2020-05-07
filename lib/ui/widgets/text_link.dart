@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 class TextLink extends StatelessWidget {
   final String text;
   final Function onPressed;
-  const TextLink(this.text, {this.onPressed});
+  final TextStyle textStyle;
+  const TextLink(
+    this.text, {
+    this.onPressed,
+    this.textStyle,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +16,7 @@ class TextLink extends StatelessWidget {
       onTap: onPressed,
       child: Text(
         text,
-        style: TextStyle(
-            fontWeight: FontWeight.w700, fontSize: 14, color: Colors.white),
+        style: textStyle,
       ),
     );
   }

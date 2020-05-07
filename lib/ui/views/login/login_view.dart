@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ideabuilder/app/locator.dart';
 import 'package:ideabuilder/ui/views/login/login_viewmodel.dart';
 import 'package:ideabuilder/ui/shared/ui_helpers.dart';
 import 'package:ideabuilder/ui/widgets/busy_button.dart';
@@ -35,29 +34,49 @@ class LoginView extends StatelessWidget {
                   password: true,
                   controller: passwordController,
                 ),
-                verticalSpaceMedium,
+                verticalSpaceSmall,
+                BusyButton(
+                  title: 'Login',
+                  busy: model.isBusy,
+                  onPressed: () {
+                    model.login(
+                      email: emailController.text,
+                      password: passwordController.text,
+                    );
+                  },
+                ),
+                verticalSpaceSmall,
+                TextLink(
+                  'Forgot your password?',
+                  textStyle: TextStyle(
+                    fontWeight: FontWeight.w200,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    //TODO: Send an email for forgot password on Firebase...
+                  },
+                ),
+                verticalSpaceSmall,
                 Row(
-                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    BusyButton(
-                      title: 'Login',
-                      busy: model.isBusy,
+                  children: <Widget>[
+                    Text(
+                      'Don\'t have an account? ',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w200,
+                      ),
+                    ),
+                    TextLink(
+                      'Sign up',
+                      textStyle: TextStyle(
+                        color: Colors.white,
+                      ),
                       onPressed: () {
-                        model.login(
-                          email: emailController.text,
-                          password: passwordController.text,
-                        );
+                        model.navigateToSignUp();
                       },
                     ),
-                    SizedBox(
-                      width: 15.0,
-                    ),
-                    BusyButton(
-                        title: 'Sign Up',
-                        onPressed: () {
-                          model.navigateToSignUp();
-                        })
                   ],
                 ),
               ],
