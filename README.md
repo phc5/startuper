@@ -1,4 +1,4 @@
-# ideabuilder
+# Startuper
 
 Idea builder helps you formulate your startup ideas into reality.
 
