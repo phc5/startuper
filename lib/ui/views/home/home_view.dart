@@ -11,7 +11,7 @@ class HomeView extends StatelessWidget {
     return ViewModelBuilder<HomeViewModel>.reactive(
       builder: (context, model, child) => Scaffold(
         body: Center(
-          child: Text(model.title),
+          child: Text('Welcome to home, ${model.user}'),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: model.updateCounter,

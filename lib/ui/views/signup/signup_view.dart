@@ -8,6 +8,7 @@ import 'package:ideabuilder/ui/widgets/input_field.dart';
 class SignUpView extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final fullNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,10 @@ class SignUpView extends StatelessWidget {
                 ),
               ),
               verticalSpaceLarge,
-              // TODO: Add additional user data here to save (episode 2)
+              InputField(
+                placeholder: 'Full Name',
+                controller: fullNameController,
+              ),
               InputField(
                 placeholder: 'Email',
                 controller: emailController,
@@ -52,6 +56,7 @@ class SignUpView extends StatelessWidget {
                       model.signUp(
                         email: emailController.text,
                         password: passwordController.text,
+                        fullName: fullNameController.text,
                       );
                     },
                   )

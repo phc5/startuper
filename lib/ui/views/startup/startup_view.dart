@@ -9,18 +9,28 @@ class StartupView extends StatelessWidget {
     // .reactive() is called to rebuild the UI every time notifyListeners() is called in ViewModel.
     // can also use .nonreactive() which will build it once and not rebuild on notifyListeners().
     return ViewModelBuilder<StartupViewModel>.reactive(
-      builder: (context, model, child) => Scaffold(
-        body: Center(
-          child: Text('Startup View'),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            model.navigateToHome();
-          },
-          child: Icon(Icons.add),
-        ),
-      ),
+      onModelReady: (model) => model.handleStartUp(),
       viewModelBuilder: () => StartupViewModel(),
+      builder: (context, model, child) => Scaffold(
+        backgroundColor: Color.fromRGBO(28, 28, 44, 1.0),
+        body: Center(
+            child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            SizedBox(
+              width: 400,
+              height: 150,
+              child: Image.asset('assets/startuper.png'),
+            ),
+            CircularProgressIndicator(
+              strokeWidth: 4.0,
+              valueColor: AlwaysStoppedAnimation(
+                Color.fromRGBO(145, 232, 161, 1.0),
+              ),
+            )
+          ],
+        )),
+      ),
     );
   }
 }
