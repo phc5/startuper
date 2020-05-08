@@ -28,7 +28,7 @@ class SignUpViewModel extends BaseViewModel {
 
     if (result is bool) {
       if (result) {
-        _navigationService.navigateTo(Routes.homeViewRoute);
+        _navigationService.navigateTo(Routes.appShellView);
       } else {
         _dialogService.showDialog(
           title: 'Sign Up Failure',

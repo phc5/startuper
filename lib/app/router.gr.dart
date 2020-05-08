@@ -10,15 +10,19 @@ import 'package:auto_route/auto_route.dart';
 import 'package:ideabuilder/ui/views/startup/startup_view.dart';
 import 'package:ideabuilder/ui/views/signup/signup_view.dart';
 import 'package:ideabuilder/ui/views/login/login_view.dart';
+import 'package:ideabuilder/ui/views/app_shell/app_shell_view.dart';
 import 'package:ideabuilder/ui/views/home/home_view.dart';
 import 'package:ideabuilder/ui/views/reset_password/reset_password_view.dart';
+import 'package:ideabuilder/ui/views/settings/settings_view.dart';
 
 abstract class Routes {
   static const startupViewRoute = '/';
   static const signUpViewRoute = '/sign-up-view-route';
   static const loginViewRoute = '/login-view-route';
+  static const appShellView = '/app-shell-view';
   static const homeViewRoute = '/home-view-route';
   static const resetPasswordViewRoute = '/reset-password-view-route';
+  static const settingsViewRoute = '/settings-view-route';
 }
 
 class Router extends RouterBase {
@@ -45,6 +49,11 @@ class Router extends RouterBase {
           builder: (context) => LoginView(),
           settings: settings,
         );
+      case Routes.appShellView:
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => AppShellView(),
+          settings: settings,
+        );
       case Routes.homeViewRoute:
         return MaterialPageRoute<dynamic>(
           builder: (context) => HomeView(),
@@ -53,6 +62,11 @@ class Router extends RouterBase {
       case Routes.resetPasswordViewRoute:
         return MaterialPageRoute<dynamic>(
           builder: (context) => ResetPasswordView(),
+          settings: settings,
+        );
+      case Routes.settingsViewRoute:
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => SettingsView(),
           settings: settings,
         );
       default:

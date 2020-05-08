@@ -1,16 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
 import 'package:ideabuilder/services/authentication.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:ideabuilder/app/locator.dart';
 import 'package:ideabuilder/app/router.gr.dart';
 
-class HomeViewModel extends BaseViewModel {
+class SettingsViewModel extends BaseViewModel {
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();
 
-  String _title = 'Home View';
+  final settingsPageIndex = 2;
+
+  String _title = 'Settings View';
   String get title => '$_title\n Counter: $counter';
 
   int _counter = 0;

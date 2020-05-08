@@ -5,26 +5,22 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:ideabuilder/app/locator.dart';
 import 'package:ideabuilder/app/router.gr.dart';
 
-class HomeViewModel extends BaseViewModel {
+import 'package:ideabuilder/ui/views/settings/settings_view.dart';
+import 'package:ideabuilder/ui/views/home/home_view.dart';
+
+class AppShellViewModel extends BaseViewModel {
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();
 
-  String _title = 'Home View';
-  String get title => '$_title\n Counter: $counter';
+  final List<Widget> pages = [HomeView(), SettingsView()];
 
-  int _counter = 0;
-  int get counter => _counter;
+  int currentViewIndex = 0;
 
   String get user => _authenticationService?.currentUser?.fullName;
 
-  void updateCounter() {
-    _counter++;
+  Future navigateToIndex(int index) async {
+    currentViewIndex = index;
     notifyListeners();
-  }
-
-  void logout() {
-    _authenticationService.logOut();
-    _navigationService.navigateTo(Routes.loginViewRoute);
   }
 }

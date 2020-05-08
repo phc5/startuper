@@ -13,7 +13,7 @@ class StartupViewModel extends BaseViewModel {
     var isUserLoggedIn = await _authenticationService.isUserLoggedIn();
 
     if (isUserLoggedIn) {
-      _navigationService.replaceWith(Routes.homeViewRoute);
+      _navigationService.replaceWith(Routes.appShellView);
     } else {
       _navigationService.replaceWith(Routes.loginViewRoute);
     }
