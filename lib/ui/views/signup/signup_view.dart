@@ -5,6 +5,7 @@ import 'package:ideabuilder/ui/shared/ui_helpers.dart';
 import 'package:ideabuilder/ui/widgets/busy_button.dart';
 import 'package:ideabuilder/ui/widgets/input_field.dart';
 import 'package:ideabuilder/ui/widgets/text_link.dart';
+import 'package:ideabuilder/ui/shared/shared_styles.dart';
 
 class SignUpView extends StatelessWidget {
   final emailController = TextEditingController();
@@ -16,7 +17,7 @@ class SignUpView extends StatelessWidget {
     return ViewModelBuilder<SignUpViewModel>.reactive(
       viewModelBuilder: () => SignUpViewModel(),
       builder: (context, model, child) => Scaffold(
-        backgroundColor: Color.fromRGBO(28, 28, 44, 1.0),
+        backgroundColor: primaryBackgroundColor,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 50.0),
           child: Column(

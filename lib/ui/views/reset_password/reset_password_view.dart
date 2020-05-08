@@ -4,6 +4,7 @@ import 'package:ideabuilder/ui/views/reset_password/reset_password_viewmodel.dar
 import 'package:ideabuilder/ui/shared/ui_helpers.dart';
 import 'package:ideabuilder/ui/widgets/busy_button.dart';
 import 'package:ideabuilder/ui/widgets/input_field.dart';
+import 'package:ideabuilder/ui/shared/shared_styles.dart';
 
 class ResetPasswordView extends StatelessWidget {
   final emailController = TextEditingController();
@@ -13,7 +14,7 @@ class ResetPasswordView extends StatelessWidget {
     return ViewModelBuilder<ResetPasswordViewModel>.reactive(
       viewModelBuilder: () => ResetPasswordViewModel(),
       builder: (context, model, child) => Scaffold(
-        backgroundColor: Color.fromRGBO(28, 28, 44, 1.0),
+        backgroundColor: primaryBackgroundColor,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 50.0),
           child: Column(

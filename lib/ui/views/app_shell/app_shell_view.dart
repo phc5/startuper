@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:ideabuilder/ui/views/app_shell/app_shell_viewmodel.dart';
-import 'package:ideabuilder/ui/widgets/busy_button.dart';
 
 class AppShellView extends StatelessWidget {
   @override
@@ -28,7 +27,10 @@ class AppShellView extends StatelessWidget {
             model.navigateToIndex(index);
           },
         ),
-        body: model.pages[model.currentViewIndex],
+        body: PageStorage(
+          child: model.pages[model.currentViewIndex],
+          bucket: model.bucket,
+        ),
       ),
     );
   }

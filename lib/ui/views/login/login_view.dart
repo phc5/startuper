@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ideabuilder/ui/shared/shared_styles.dart';
 import 'package:ideabuilder/ui/views/login/login_viewmodel.dart';
 import 'package:ideabuilder/ui/shared/ui_helpers.dart';
 import 'package:ideabuilder/ui/widgets/busy_button.dart';
@@ -15,7 +16,7 @@ class LoginView extends StatelessWidget {
     return ViewModelBuilder<LoginViewModel>.reactive(
       viewModelBuilder: () => LoginViewModel(),
       builder: (context, model, child) => Scaffold(
-          backgroundColor: Color.fromRGBO(28, 28, 44, 1.0),
+          backgroundColor: primaryBackgroundColor,
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50),
             child: Column(

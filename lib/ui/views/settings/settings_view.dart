@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:ideabuilder/ui/views/settings/settings_viewmodel.dart';
 import 'package:ideabuilder/ui/widgets/busy_button.dart';
+import 'package:ideabuilder/ui/shared/shared_styles.dart';
 
 class SettingsView extends StatelessWidget {
+  const SettingsView({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     // The ViewModelBuilder provides the UI that will be built from the ViewModel
@@ -12,6 +15,7 @@ class SettingsView extends StatelessWidget {
     return ViewModelBuilder<SettingsViewModel>.reactive(
       viewModelBuilder: () => SettingsViewModel(),
       builder: (context, model, child) => Scaffold(
+        backgroundColor: primaryBackgroundColor,
         body: Center(
           child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
             Text('Welcome to SETTINGS, ${model.user}'),

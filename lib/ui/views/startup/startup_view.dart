@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ideabuilder/ui/shared/shared_styles.dart';
 import 'package:stacked/stacked.dart';
-import './startup_viewmodel.dart';
+import 'package:ideabuilder/ui/views/startup/startup_viewmodel.dart';
 
 class StartupView extends StatelessWidget {
   @override
@@ -12,7 +13,7 @@ class StartupView extends StatelessWidget {
       onModelReady: (model) => model.handleStartUp(),
       viewModelBuilder: () => StartupViewModel(),
       builder: (context, model, child) => Scaffold(
-        backgroundColor: Color.fromRGBO(28, 28, 44, 1.0),
+        backgroundColor: primaryBackgroundColor,
         body: Center(
             child: Column(
           mainAxisSize: MainAxisSize.min,
