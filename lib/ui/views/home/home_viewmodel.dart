@@ -24,6 +24,6 @@ class HomeViewModel extends BaseViewModel {
 
   void logout() {
     _authenticationService.logOut();
-    _navigationService.navigateTo(Routes.loginView);
+    _navigationService.navigateTo(Routes.loginViewRoute);
   }
 }

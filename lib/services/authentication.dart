@@ -62,7 +62,19 @@ class AuthenticationService {
 
   Future _populateCurrentUser(FirebaseUser user) async {
     if (user != null) {
-      _currentUser = await _firestoreService.getUser(user.uid);
+      try {
+        _currentUser = await _firestoreService.getUser(user.uid);
+      } catch (e) {
+        return e.message;
+      }
+    }
+  }
+
+  Future resetPassword(String email) async {
+    try {
+      await _firebaseAuth.sendPasswordResetEmail(email: email);
+    } catch (e) {
+      return e.message;
     }
   }
 

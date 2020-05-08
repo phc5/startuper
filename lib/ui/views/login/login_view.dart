@@ -53,7 +53,7 @@ class LoginView extends StatelessWidget {
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    //TODO: Send an email for forgot password on Firebase...
+                    model.navigateToResetPassword();
                   },
                 ),
                 verticalSpaceSmall,

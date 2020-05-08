@@ -47,6 +47,10 @@ class LoginViewModel extends BaseViewModel {
 
   /// Sends user to sign up view
   Future navigateToSignUp() async {
-    await _navigationService.replaceWith(Routes.signUpView);
+    await _navigationService.replaceWith(Routes.signUpViewRoute);
+  }
+
+  Future navigateToResetPassword() async {
+    await _navigationService.replaceWith(Routes.resetPasswordViewRoute);
   }
 }
