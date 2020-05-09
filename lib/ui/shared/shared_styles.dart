@@ -23,3 +23,4 @@ const TextStyle buttonTitleTextStyle = const TextStyle(
     fontWeight: FontWeight.w700, color: Color.fromRGBO(66, 66, 66, 1.0));
 
 const Color primaryBackgroundColor = Color.fromRGBO(28, 28, 44, 1.0);
+const Color primaryButtonColor = Color.fromRGBO(145, 232, 161, 1.0);

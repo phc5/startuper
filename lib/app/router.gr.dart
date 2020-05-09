@@ -33,6 +33,7 @@ class Router extends RouterBase {
 
   @override
   Route<dynamic> onGenerateRoute(RouteSettings settings) {
+    final args = settings.arguments;
     switch (settings.name) {
       case Routes.startupViewRoute:
         return MaterialPageRoute<dynamic>(
@@ -55,8 +56,12 @@ class Router extends RouterBase {
           settings: settings,
         );
       case Routes.homeViewRoute:
+        if (hasInvalidArgs<HomeViewArguments>(args)) {
+          return misTypedArgsRoute<HomeViewArguments>(args);
+        }
+        final typedArgs = args as HomeViewArguments ?? HomeViewArguments();
         return MaterialPageRoute<dynamic>(
-          builder: (context) => HomeView(),
+          builder: (context) => HomeView(key: typedArgs.key),
           settings: settings,
         );
       case Routes.resetPasswordViewRoute:
@@ -65,12 +70,33 @@ class Router extends RouterBase {
           settings: settings,
         );
       case Routes.settingsViewRoute:
+        if (hasInvalidArgs<SettingsViewArguments>(args)) {
+          return misTypedArgsRoute<SettingsViewArguments>(args);
+        }
+        final typedArgs =
+            args as SettingsViewArguments ?? SettingsViewArguments();
         return MaterialPageRoute<dynamic>(
-          builder: (context) => SettingsView(),
+          builder: (context) => SettingsView(key: typedArgs.key),
           settings: settings,
         );
       default:
         return unknownRoutePage(settings.name);
     }
   }
+}
+
+//**************************************************************************
+// Arguments holder classes
+//***************************************************************************
+
+//HomeView arguments holder class
+class HomeViewArguments {
+  final Key key;
+  HomeViewArguments({this.key});
+}
+
+//SettingsView arguments holder class
+class SettingsViewArguments {
+  final Key key;
+  SettingsViewArguments({this.key});
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:ideabuilder/ui/widgets/input_field.dart';
+
 import 'package:stacked/stacked.dart';
 import 'package:ideabuilder/ui/views/settings/settings_viewmodel.dart';
 import 'package:ideabuilder/ui/widgets/busy_button.dart';
@@ -36,7 +35,7 @@ class SettingsView extends StatelessWidget {
                   title: 'Delete User',
                   busy: model.isBusy,
                   onPressed: () {
-                    _showMyDialog(context, model);
+                    model.showDeleteAccountDialog(context, model);
                   },
                 ),
               ],
@@ -46,39 +45,4 @@ class SettingsView extends StatelessWidget {
       ),
     );
   }
-}
-
-Future<void> _showMyDialog(context, model) async {
-  final passwordController = TextEditingController();
-
-  return showDialog<void>(
-    context: context,
-    barrierDismissible: false,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text('AlertDialog Title'),
-        content: SingleChildScrollView(
-          child: ListBody(
-            children: <Widget>[
-              Text('Please enter your password to delete your account.'),
-              Text('This is an irreversible action.'),
-              InputField(
-                placeholder: 'Password',
-                password: true,
-                controller: passwordController,
-              ),
-            ],
-          ),
-        ),
-        actions: <Widget>[
-          FlatButton(
-            child: Text('Submit'),
-            onPressed: () {
-              model.deleteUser(passwordController.text);
-            },
-          ),
-        ],
-      );
-    },
-  );
 }

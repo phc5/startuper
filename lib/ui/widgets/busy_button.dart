@@ -8,6 +8,7 @@ class BusyButton extends StatefulWidget {
   final Function onPressed;
   final bool enabled;
   final Color color;
+  final Color textColor;
 
   const BusyButton({
     @required this.title,
@@ -15,6 +16,7 @@ class BusyButton extends StatefulWidget {
     @required this.onPressed,
     this.enabled = true,
     this.color = const Color.fromRGBO(145, 232, 161, 1.0),
+    this.textColor = primaryBackgroundColor,
   });
 
   @override
