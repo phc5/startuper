@@ -29,7 +29,7 @@ class SignUpView extends StatelessWidget {
                 'Sign Up',
                 style: TextStyle(
                   fontSize: 38,
-                  color: Colors.white,
+                  color: primaryTextColor,
                 ),
               ),
               verticalSpaceLarge,
@@ -69,14 +69,14 @@ class SignUpView extends StatelessWidget {
                   Text(
                     'Already have an account? ',
                     style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w200,
+                      color: primaryTextColor,
+                      fontWeight: FontWeight.w300,
                     ),
                   ),
                   TextLink(
                     'Log in',
                     textStyle: TextStyle(
-                      color: Colors.white,
+                      color: primaryTextColor,
                     ),
                     onPressed: () {
                       model.navigateToLogin();

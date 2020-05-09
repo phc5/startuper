@@ -35,6 +35,28 @@ class SettingsViewModel extends BaseViewModel {
     _navigationService.navigateTo(Routes.loginViewRoute);
   }
 
+  Future changePassword(String email, context) async {
+    setBusy(true);
+    var error = await _authenticationService.resetPassword(email);
+
+    setBusy(false);
+
+    if (error != null) {
+      await _dialogService.showDialog(
+        title: 'Reset Password Failure',
+        description: error,
+      );
+    } else {
+      Navigator.of(context).pop();
+      await _dialogService.showDialog(
+        title: 'Password Reset Email Sent!',
+        description:
+            'Please follow the instructions in the email to complete your password reset.',
+      );
+      Navigator.of(context).pop();
+    }
+  }
+
   Future deleteUser(String password) async {
     setBusy(true);
     var result = await _authenticationService.deleteUser(password);
@@ -49,6 +71,54 @@ class SettingsViewModel extends BaseViewModel {
     } else {
       _navigationService.replaceWith(Routes.loginViewRoute);
     }
+  }
+
+  Future<void> showChangePassword(context, model) async {
+    final emailController = TextEditingController();
+
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Change Password'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(
+                  'To change your password, enter your email below. An email will be sent that incldues a link to change your password.',
+                  style: TextStyle(
+                    fontSize: 14,
+                  ),
+                ),
+                verticalSpaceSmall,
+                InputField(
+                  placeholder: 'Email',
+                  controller: emailController,
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            BusyButton(
+              title: 'Confirm',
+              color: Colors.redAccent,
+              textColor: Colors.white,
+              busy: model.isBusy,
+              onPressed: () {
+                model.changePassword(emailController.text, context);
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Future<void> showDeleteAccountDialog(context, model) async {

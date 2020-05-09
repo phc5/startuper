@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ideabuilder/ui/shared/shared_styles.dart';
 
 class NoteText extends StatelessWidget {
   final String text;
@@ -14,7 +15,7 @@ class NoteText extends StatelessWidget {
       style: TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.normal,
-        color: color ?? Colors.grey[600],
+        color: primaryTextColor,
       ),
     );
   }

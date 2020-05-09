@@ -25,6 +25,7 @@ class LoginView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Image.asset('assets/startuper.png'),
+                verticalSpaceMedium,
                 InputField(
                   placeholder: 'Email',
                   controller: emailController,
@@ -50,8 +51,8 @@ class LoginView extends StatelessWidget {
                 TextLink(
                   'Forgot your password?',
                   textStyle: TextStyle(
-                    fontWeight: FontWeight.w200,
-                    color: Colors.white,
+                    fontWeight: FontWeight.w300,
+                    color: primaryTextColor,
                   ),
                   onPressed: () {
                     model.navigateToResetPassword();
@@ -65,14 +66,14 @@ class LoginView extends StatelessWidget {
                     Text(
                       'Don\'t have an account? ',
                       style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w200,
+                        color: primaryTextColor,
+                        fontWeight: FontWeight.w300,
                       ),
                     ),
                     TextLink(
                       'Sign up',
                       textStyle: TextStyle(
-                        color: Colors.white,
+                        color: primaryTextColor,
                       ),
                       onPressed: () {
                         model.navigateToSignUp();

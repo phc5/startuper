@@ -112,7 +112,6 @@ class AuthenticationService {
         await user.delete().catchError((e) => throw (e));
       }
     } catch (e) {
-      print(e.message);
       return e.message;
     }
   }

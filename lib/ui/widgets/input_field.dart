@@ -88,8 +88,9 @@ class _InputFieldState extends State<InputField> {
                   readOnly: widget.isReadOnly,
                   decoration: InputDecoration.collapsed(
                       hintText: widget.placeholder,
-                      hintStyle:
-                          TextStyle(fontSize: widget.smallVersion ? 12 : 15)),
+                      hintStyle: TextStyle(
+                          fontSize: widget.smallVersion ? 12 : 15,
+                          color: primaryTextColor)),
                 ),
               ),
               GestureDetector(

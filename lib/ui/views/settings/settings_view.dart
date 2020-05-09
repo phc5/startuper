@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ideabuilder/ui/shared/ui_helpers.dart';
+import 'package:ideabuilder/ui/widgets/settings_button.dart';
+import 'package:ideabuilder/ui/widgets/text_link.dart';
 
 import 'package:stacked/stacked.dart';
 import 'package:ideabuilder/ui/views/settings/settings_viewmodel.dart';
@@ -16,31 +19,70 @@ class SettingsView extends StatelessWidget {
     return ViewModelBuilder<SettingsViewModel>.reactive(
       viewModelBuilder: () => SettingsViewModel(),
       builder: (context, model, child) => Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: Text(
+            'Settings',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
         backgroundColor: primaryBackgroundColor,
         body: Center(
-          child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-            Text('Welcome to SETTINGS, ${model.user}'),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                BusyButton(
-                  title: 'Log Out',
-                  busy: model.isBusy,
-                  onPressed: () {
-                    model.logout();
-                  },
+          child: ListView(
+            children: <Widget>[
+              Container(
+                height: 50,
+                child: Center(
+                  child: SettingsButton(
+                    title: 'Change Email',
+                    onPressed: () {
+                      //TODO: Change email
+                    },
+                  ),
                 ),
-                BusyButton(
-                  title: 'Delete User',
-                  busy: model.isBusy,
-                  onPressed: () {
-                    model.showDeleteAccountDialog(context, model);
-                  },
+              ),
+              spacedDivider,
+              Container(
+                height: 50,
+                child: Center(
+                  child: SettingsButton(
+                    title: 'Change Password',
+                    onPressed: () {
+                      model.showChangePassword(context, model);
+                    },
+                  ),
                 ),
-              ],
-            )
-          ]),
+              ),
+              spacedDivider,
+              Container(
+                height: 50,
+                child: Center(
+                  child: SettingsButton(
+                    title: 'Log Out',
+                    onPressed: () {
+                      model.logout();
+                    },
+                  ),
+                ),
+              ),
+              spacedDivider,
+              Container(
+                height: 50,
+                child: Center(
+                  child: SettingsButton(
+                    title: 'Delete Account',
+                    onPressed: () {
+                      model.showDeleteAccountDialog(context, model);
+                    },
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              spacedDivider,
+            ],
+          ),
         ),
       ),
     );
