@@ -22,4 +22,12 @@ class FirestoreService {
       return e.message;
     }
   }
+
+  Future deleteUser(String uid) async {
+    try {
+      await _usersCollectionReference.document(uid).delete();
+    } catch (e) {
+      return e.message;
+    }
+  }
 }

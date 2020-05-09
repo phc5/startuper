@@ -28,4 +28,8 @@ class SettingsViewModel extends BaseViewModel {
     _authenticationService.logOut();
     _navigationService.navigateTo(Routes.loginViewRoute);
   }
+
+  Future deleteUser(String password) async {
+    await _authenticationService.deleteUser(password);
+  }
 }

@@ -1,12 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:ideabuilder/app/locator.dart';
 import 'package:ideabuilder/services/firestore.dart';
 import 'package:ideabuilder/models/user.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'package:ideabuilder/app/router.gr.dart';
 
 class AuthenticationService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirestoreService _firestoreService = locator<FirestoreService>();
+  final NavigationService _navigationService = locator<NavigationService>();
 
   User _currentUser;
   User get currentUser => _currentUser;
@@ -82,6 +86,33 @@ class AuthenticationService {
     try {
       await _firebaseAuth.signOut();
       _currentUser = null;
+    } catch (e) {
+      return e.message;
+    }
+  }
+
+  Future reauthenticate(String password) async {
+    try {
+      var user = await _firebaseAuth.currentUser();
+      _firestoreService.deleteUser(user.uid);
+      var credential = EmailAuthProvider.getCredential(
+          email: user.email, password: password);
+      return user.reauthenticateWithCredential(credential);
+    } catch (e) {
+      return e.message;
+    }
+  }
+
+  Future deleteUser(String password) async {
+    try {
+      var user = await _firebaseAuth.currentUser();
+      var authenicated = await reauthenticate(password);
+
+      if (authenicated is AuthResult) {
+        _firestoreService.deleteUser(user.uid);
+        user.delete();
+        _navigationService.replaceWith(Routes.loginViewRoute);
+      }
     } catch (e) {
       return e.message;
     }
