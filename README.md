@@ -20,3 +20,13 @@ This project follows a twist of MVVM without the two way binding by using the [s
 In our views, we use `ViewModelBuilder` to bind our Views to our ViewModels. `ViewModelBuilder` has two constructors: `.reactive()` and `.nonReactive()`. When a function in our ViewModel calls `notifyListeners()`, the Views with the `.reactive()` constructor will react to the changes and rebuild your UI with the newly updated ViewModel state.
 
 There's much more to the `stacked` architecture and I've only scratched the surface. I'm interested to see how well this scales.
+
+
+## Dev Notes
+
+`rm -rf ios/Flutter/App.framework` to fix error ``"Building for iOS simulator, but the linked and embedded framework App.framework was built for iOS."`.
+`flutter packages pub run build_runner clean` to clear generated files like routes and locator.
+`flutter packages pub run build_runner build` to build routes and locator files.
+
+
+

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:ideabuilder/ui/views/delete_account/delete_account_viewmodel.dart';
 import 'package:stacked/stacked.dart';
-import 'package:ideabuilder/ui/views/reset_password/reset_password_viewmodel.dart';
 import 'package:ideabuilder/ui/shared/ui_helpers.dart';
 import 'package:ideabuilder/ui/widgets/busy_button.dart';
 import 'package:ideabuilder/ui/widgets/input_field.dart';
 import 'package:ideabuilder/ui/shared/shared_styles.dart';
 
-class ResetPasswordView extends StatelessWidget {
-  final emailController = TextEditingController();
+class DeleteAccountView extends StatelessWidget {
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<ResetPasswordViewModel>.reactive(
-      viewModelBuilder: () => ResetPasswordViewModel(),
+    return ViewModelBuilder<DeleteAccountViewModel>.reactive(
+      viewModelBuilder: () => DeleteAccountViewModel(),
       builder: (context, model, child) => Scaffold(
         backgroundColor: primaryBackgroundColor,
         body: Padding(
@@ -23,7 +23,7 @@ class ResetPasswordView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                'Change Password',
+                'Account Deactivation',
                 style: TextStyle(
                   fontSize: 38,
                   color: primaryTextColor,
@@ -31,15 +31,24 @@ class ResetPasswordView extends StatelessWidget {
               ),
               verticalSpaceMedium,
               Text(
-                'To change your password, enter your email below. An email will be sent that incldues a link to change your password.',
+                'When you deactivate your account, you will be logged out and this account will no longer be usable.',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                ),
+              ),
+              verticalSpaceSmall,
+              Text(
+                'Please enter your password to confirm.',
                 style: TextStyle(
                   fontSize: 14,
                 ),
               ),
-              verticalSpaceMedium,
+              verticalSpaceSmall,
               InputField(
-                placeholder: 'Email',
-                controller: emailController,
+                placeholder: 'Password',
+                password: true,
+                controller: passwordController,
               ),
               verticalSpaceSmall,
               Row(
@@ -58,12 +67,11 @@ class ResetPasswordView extends StatelessWidget {
                   ),
                   BusyButton(
                     title: 'Confirm',
-                    color: primaryTextColor,
+                    color: Colors.redAccent,
+                    textColor: Colors.white,
                     busy: model.isBusy,
                     onPressed: () {
-                      model.resetPassword(
-                        email: emailController.text,
-                      );
+                      model.deleteUser(passwordController.text);
                     },
                   ),
                 ],

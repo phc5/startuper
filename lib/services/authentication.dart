@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:ideabuilder/app/locator.dart';
 import 'package:ideabuilder/services/firestore.dart';
 import 'package:ideabuilder/models/user.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 class AuthenticationService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -80,6 +79,28 @@ class AuthenticationService {
   Future resetPassword(String email) async {
     try {
       await _firebaseAuth.sendPasswordResetEmail(email: email);
+    } catch (e) {
+      return e.message;
+    }
+  }
+
+  Future changeEmail(String newEmail, String password) async {
+    try {
+      var user = await _firebaseAuth.currentUser();
+
+      if (user != null) {
+        var credential = EmailAuthProvider.getCredential(
+            email: user.email, password: password);
+        await user
+            .reauthenticateWithCredential(credential)
+            .catchError((e) => throw (e));
+
+        await _firestoreService
+            .updateUserEmail(user.uid, newEmail)
+            .catchError((e) => throw (e));
+
+        await user.updateEmail(newEmail).catchError((e) => throw (e));
+      }
     } catch (e) {
       return e.message;
     }

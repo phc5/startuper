@@ -31,7 +31,7 @@ class ResetPasswordViewModel extends BaseViewModel {
         description:
             'Please follow the instructions in the email to complete your password reset.',
       );
-      _navigationService.replaceWith(Routes.loginViewRoute);
+      _navigationService.popRepeated(1);
     }
   }
 }

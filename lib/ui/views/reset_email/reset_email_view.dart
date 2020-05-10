@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:ideabuilder/ui/views/reset_email/reset_email_viewmodel.dart';
 import 'package:stacked/stacked.dart';
-import 'package:ideabuilder/ui/views/reset_password/reset_password_viewmodel.dart';
 import 'package:ideabuilder/ui/shared/ui_helpers.dart';
 import 'package:ideabuilder/ui/widgets/busy_button.dart';
 import 'package:ideabuilder/ui/widgets/input_field.dart';
 import 'package:ideabuilder/ui/shared/shared_styles.dart';
 
-class ResetPasswordView extends StatelessWidget {
+class ResetEmailView extends StatelessWidget {
   final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<ResetPasswordViewModel>.reactive(
-      viewModelBuilder: () => ResetPasswordViewModel(),
+    return ViewModelBuilder<ResetEmailViewModel>.reactive(
+      viewModelBuilder: () => ResetEmailViewModel(),
       builder: (context, model, child) => Scaffold(
         backgroundColor: primaryBackgroundColor,
         body: Padding(
@@ -23,7 +24,7 @@ class ResetPasswordView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                'Change Password',
+                'Change Email',
                 style: TextStyle(
                   fontSize: 38,
                   color: primaryTextColor,
@@ -31,15 +32,22 @@ class ResetPasswordView extends StatelessWidget {
               ),
               verticalSpaceMedium,
               Text(
-                'To change your password, enter your email below. An email will be sent that incldues a link to change your password.',
+                'To change your email, enter your new email and password below.',
                 style: TextStyle(
                   fontSize: 14,
                 ),
               ),
               verticalSpaceMedium,
+              verticalSpaceSmall,
               InputField(
                 placeholder: 'Email',
                 controller: emailController,
+              ),
+              verticalSpaceSmall,
+              InputField(
+                placeholder: 'Password',
+                password: true,
+                controller: passwordController,
               ),
               verticalSpaceSmall,
               Row(
@@ -61,9 +69,8 @@ class ResetPasswordView extends StatelessWidget {
                     color: primaryTextColor,
                     busy: model.isBusy,
                     onPressed: () {
-                      model.resetPassword(
-                        email: emailController.text,
-                      );
+                      model.changeEmail(emailController.text,
+                          passwordController.text, context);
                     },
                   ),
                 ],

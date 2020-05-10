@@ -30,7 +30,7 @@ class LoginViewModel extends BaseViewModel {
 
     if (result is bool) {
       if (result) {
-        _navigationService.navigateTo(Routes.appShellView);
+        _navigationService.navigateTo(Routes.appShellViewRoute);
       } else {
         _dialogService.showDialog(
           title: 'Login Failure',
@@ -51,6 +51,6 @@ class LoginViewModel extends BaseViewModel {
   }
 
   Future navigateToResetPassword() async {
-    await _navigationService.replaceWith(Routes.resetPasswordViewRoute);
+    await _navigationService.navigateTo(Routes.resetPasswordViewRoute);
   }
 }
