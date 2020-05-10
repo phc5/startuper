@@ -37,10 +37,9 @@ class ResetEmailView extends StatelessWidget {
                   fontSize: 14,
                 ),
               ),
-              verticalSpaceMedium,
               verticalSpaceSmall,
               InputField(
-                placeholder: 'Email',
+                placeholder: 'New Email',
                 controller: emailController,
               ),
               verticalSpaceSmall,

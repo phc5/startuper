@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ideabuilder/ui/shared/shared_styles.dart';
 import 'package:stacked/stacked.dart';
 import 'package:ideabuilder/ui/views/app_shell/app_shell_viewmodel.dart';
 
@@ -12,6 +13,7 @@ class AppShellView extends StatelessWidget {
       viewModelBuilder: () => AppShellViewModel(),
       builder: (context, model, child) => Scaffold(
         bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: primaryTextColor,
           currentIndex: model.currentViewIndex,
           items: [
             BottomNavigationBarItem(

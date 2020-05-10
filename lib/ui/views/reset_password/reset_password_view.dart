@@ -36,7 +36,7 @@ class ResetPasswordView extends StatelessWidget {
                   fontSize: 14,
                 ),
               ),
-              verticalSpaceMedium,
+              verticalSpaceSmall,
               InputField(
                 placeholder: 'Email',
                 controller: emailController,

@@ -18,114 +18,169 @@ class SettingsView extends StatelessWidget {
     return ViewModelBuilder<SettingsViewModel>.reactive(
       viewModelBuilder: () => SettingsViewModel(),
       builder: (context, model, child) => Scaffold(
-        appBar: AppBar(
-          backgroundColor: primaryTextColor,
-          automaticallyImplyLeading: false,
-          title: Text(
-            'Settings',
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
-        ),
         backgroundColor: primaryBackgroundColor,
-        body: ListView(
-          padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
+        body: Stack(
+          overflow: Overflow.visible,
           children: <Widget>[
-            verticalSpaceLarge,
-            spacedDivider,
-            InkWell(
-              onTap: () {
-                model.changeEmail();
-              },
+            Container(
               child: SizedBox(
-                height: 50,
+                height: 190,
                 child: Container(
-                  padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  color: primaryTextColor,
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(20, 60, 0, 0),
+              child: Text(
+                'Settings',
+                style: TextStyle(color: Colors.white, fontSize: 35),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(30, 130, 30, 40),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey[300],
+                    offset: new Offset(1.0, 2.25),
+                  ),
+                  BoxShadow(
+                    color: Colors.grey[300],
+                    offset: new Offset(-1.0, 2.25),
+                  )
+                ],
+              ),
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
+                        verticalSpaceMedium,
                         Text(
-                          'Change Email',
+                          'Account',
                           style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: primaryTextColor,
+                            fontSize: 13,
+                            color: Colors.blueGrey[300],
                           ),
                         ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          size: 12,
-                          color: primaryTextColor,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            spacedDivider,
-            InkWell(
-              onTap: () {
-                model.changePassword();
-              },
-              child: SizedBox(
-                height: 50,
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          'Change Password',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: primaryTextColor,
+                        verticalSpaceSmall,
+                        spacedDivider,
+                        InkWell(
+                          onTap: () {
+                            model.changeEmail();
+                          },
+                          child: SizedBox(
+                            height: 50,
+                            child: Container(
+                              padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Text(
+                                      'Change Email',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        color: primaryTextColor,
+                                      ),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_forward_ios,
+                                      size: 12,
+                                      color: primaryTextColor,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          size: 12,
-                          color: primaryTextColor,
+                        spacedDivider,
+                        InkWell(
+                          onTap: () {
+                            model.changePassword();
+                          },
+                          child: SizedBox(
+                            height: 50,
+                            child: Container(
+                              padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Text(
+                                      'Change Password',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        color: primaryTextColor,
+                                      ),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_forward_ios,
+                                      size: 12,
+                                      color: primaryTextColor,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
+                        spacedDivider,
+                        verticalSpaceMedium,
                       ],
                     ),
-                  ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisSize: MainAxisSize.max,
+                      children: <Widget>[
+                        Container(
+                          height: 50,
+                          child: FlatButton(
+                            child: Text('Log Out'),
+                            color: primaryTextColor,
+                            onPressed: () {
+                              model.logout();
+                            },
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(6.0),
+                            ),
+                            textColor: Colors.white,
+                          ),
+                        ),
+                        verticalSpaceSmall,
+                        Container(
+                          height: 50,
+                          child: FlatButton(
+                            child: Text('Delete Account'),
+                            color: Colors.redAccent,
+                            onPressed: () {
+                              model.deleteAccount();
+                            },
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(6.0),
+                            ),
+                            textColor: Colors.white,
+                          ),
+                        ),
+                        verticalSpaceMedium,
+                      ],
+                    ),
+                  ],
                 ),
-              ),
-            ),
-            spacedDivider,
-            verticalSpaceMedium,
-            Container(
-              height: 50,
-              child: FlatButton(
-                child: Text('Log Out'),
-                color: primaryTextColor,
-                onPressed: () {
-                  model.logout();
-                },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(6.0),
-                ),
-                textColor: Colors.white,
-              ),
-            ),
-            verticalSpaceSmall,
-            Container(
-              height: 50,
-              child: FlatButton(
-                child: Text('Delete Account'),
-                color: Colors.redAccent,
-                onPressed: () {
-                  model.deleteAccount();
-                },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(6.0),
-                ),
-                textColor: Colors.white,
               ),
             ),
           ],
