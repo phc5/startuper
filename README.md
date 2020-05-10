@@ -21,6 +21,34 @@ In our views, we use `ViewModelBuilder` to bind our Views to our ViewModels. `Vi
 
 There's much more to the `stacked` architecture and I've only scratched the surface. I'm interested to see how well this scales.
 
+## Project Structure
+
+The project structure for this application draws its hierarchy from the application architecture described above. The source code lives in a `lib` directory that contains serveral subdirectories: 
+
+```
+lib/
+├── app/
+├── main.dart
+├── models/
+├── services/
+└── ui/
+    ├── shared/
+    ├── views/
+    └── widgets/
+```
+Since the project structure follows the application architecture, files and directories are grouped together by their own conncers which has made organizing and developing much easier and enjoyable. 
+
+The one pillar of the application architecture that is not shown on the tree diagram is the `ViewModel`. I found that keeping the `View` and the `ViewModel` in different directories didn't make much sense since they are tied together. While developing, I found myself jumping back and forth between the `View` and `ViewModel`, so I opted to keep the `View` and `ViewModel` in the same directory for each `view`. 
+
+For example:
+
+```
+views/
+├── login_view/
+    ├── login_view.dart
+    └── login_viewmodel.dart
+```
+
 
 ## Dev Notes
 
