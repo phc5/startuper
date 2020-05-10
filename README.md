@@ -24,9 +24,9 @@ There's much more to the `stacked` architecture and I've only scratched the surf
 
 ## Dev Notes
 
-`rm -rf ios/Flutter/App.framework` to fix error ``"Building for iOS simulator, but the linked and embedded framework App.framework was built for iOS."`.
-`flutter packages pub run build_runner clean` to clear generated files like routes and locator.
-`flutter packages pub run build_runner build` to build routes and locator files.
+- `rm -rf ios/Flutter/App.framework` to fix error  `"Building for iOS simulator, but the linked and embedded framework App.framework was built for iOS."`.
+- `flutter packages pub run build_runner clean` to clear generated files like routes and locator.
+- `flutter packages pub run build_runner build` to build routes and locator files.
 
 
 
