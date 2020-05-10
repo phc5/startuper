@@ -36,7 +36,7 @@ lib/
     ├── views/
     └── widgets/
 ```
-Since the project structure follows the application architecture, files and directories are grouped together by their own conncers which has made organizing and developing much easier and enjoyable. 
+Since the project structure follows the application architecture, files and directories are grouped together by their own concerns which has made organizing and developing much easier and enjoyable. 
 
 The one pillar of the application architecture that is not shown on the tree diagram is the `ViewModel`. I found that keeping the `View` and the `ViewModel` in different directories didn't make much sense since they are tied together. While developing, I found myself jumping back and forth between the `View` and `ViewModel`, so I opted to keep the `View` and `ViewModel` in the same directory for each `view`. 
 
@@ -44,7 +44,7 @@ For example:
 
 ```
 views/
-├── login_view/
+└── login_view/
     ├── login_view.dart
     └── login_viewmodel.dart
 ```
