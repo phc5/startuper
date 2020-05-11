@@ -25,7 +25,6 @@ class FirestoreService {
 
   Future updateUserEmail(String uid, String email) async {
     try {
-      var userData = await _usersCollectionReference.document(uid).get();
       _usersCollectionReference.document(uid).updateData({"email": email});
     } catch (e) {
       return e.message;

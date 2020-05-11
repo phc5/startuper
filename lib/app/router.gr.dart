@@ -10,7 +10,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:ideabuilder/ui/views/startup/startup_view.dart';
 import 'package:ideabuilder/ui/views/signup/signup_view.dart';
 import 'package:ideabuilder/ui/views/login/login_view.dart';
-import 'package:ideabuilder/ui/views/app_shell/app_shell_view.dart';
 import 'package:ideabuilder/ui/views/home/home_view.dart';
 import 'package:ideabuilder/ui/views/reset_email/reset_email_view.dart';
 import 'package:ideabuilder/ui/views/reset_password/reset_password_view.dart';
@@ -21,7 +20,6 @@ abstract class Routes {
   static const startupViewRoute = '/';
   static const signUpViewRoute = '/sign-up-view-route';
   static const loginViewRoute = '/login-view-route';
-  static const appShellViewRoute = '/app-shell-view-route';
   static const homeViewRoute = '/home-view-route';
   static const resetEmailViewRoute = '/reset-email-view-route';
   static const resetPasswordViewRoute = '/reset-password-view-route';
@@ -52,11 +50,6 @@ class Router extends RouterBase {
       case Routes.loginViewRoute:
         return MaterialPageRoute<dynamic>(
           builder: (context) => LoginView(),
-          settings: settings,
-        );
-      case Routes.appShellViewRoute:
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => AppShellView(),
           settings: settings,
         );
       case Routes.homeViewRoute:

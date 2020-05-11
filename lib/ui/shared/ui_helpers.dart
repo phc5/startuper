@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ideabuilder/enums/devce_screen_type.dart';
 
 const Widget horizontalSpaceTiny = SizedBox(width: 5.0);
 const Widget horizontalSpaceSmall = SizedBox(width: 10.0);
@@ -42,3 +43,18 @@ double halfScreenWidth(BuildContext context) =>
 
 double thirdScreenWidth(BuildContext context) =>
     screenWidthFraction(context, dividedBy: 3);
+
+///SCREEN INFORMATION
+DeviceScreenType getDeviceType(MediaQueryData mediaQuery) {
+  double deviceWidth = mediaQuery.size.shortestSide;
+
+  if (deviceWidth > 950) {
+    return DeviceScreenType.Desktop;
+  }
+
+  if (deviceWidth > 600) {
+    return DeviceScreenType.Tablet;
+  }
+
+  return DeviceScreenType.Mobile;
+}

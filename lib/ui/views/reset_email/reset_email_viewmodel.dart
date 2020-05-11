@@ -1,14 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ideabuilder/ui/shared/shared_styles.dart';
-import 'package:ideabuilder/ui/widgets/busy_button.dart';
 import 'package:stacked/stacked.dart';
 import 'package:ideabuilder/services/authentication.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:ideabuilder/ui/shared/ui_helpers.dart';
-import 'package:ideabuilder/ui/widgets/input_field.dart';
 import 'package:ideabuilder/app/locator.dart';
-import 'package:ideabuilder/app/router.gr.dart';
 
 class ResetEmailViewModel extends BaseViewModel {
   final AuthenticationService _authenticationService =

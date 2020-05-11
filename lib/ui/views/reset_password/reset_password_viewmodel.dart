@@ -3,7 +3,6 @@ import 'package:ideabuilder/services/authentication.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:stacked/stacked.dart';
 import 'package:ideabuilder/app/locator.dart';
-import 'package:ideabuilder/app/router.gr.dart';
 
 class ResetPasswordViewModel extends BaseViewModel {
   final AuthenticationService _authenticationService =

@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route_annotations.dart';
-import 'package:ideabuilder/ui/views/app_shell/app_shell_view.dart';
 import 'package:ideabuilder/ui/views/delete_account/delete_account_view.dart';
 import 'package:ideabuilder/ui/views/login/login_view.dart';
 import 'package:ideabuilder/ui/views/reset_email/reset_email_view.dart';
@@ -16,7 +15,6 @@ class $Router {
   StartupView startupViewRoute;
   SignUpView signUpViewRoute;
   LoginView loginViewRoute;
-  AppShellView appShellViewRoute;
   HomeView homeViewRoute;
   ResetEmailView resetEmailViewRoute;
   ResetPasswordView resetPasswordViewRoute;

@@ -30,6 +30,7 @@ dependencies:
   injectable: ^0.3.0
   firebase_auth: ^0.16.0
   cloud_firestore: ^0.13.5
+  device_preview:
 
 dev_dependencies:
   flutter_test:
