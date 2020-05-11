@@ -8,11 +8,13 @@ import 'package:ideabuilder/ui/widgets/app_drawer/drawer_option/drawer_option_ta
 class DrawerOption extends StatelessWidget {
   final String title;
   final IconData iconData;
+  final String route;
 
   const DrawerOption({
     Key key,
     this.title,
     this.iconData,
+    this.route,
   }) : super(key: key);
 
   @override
@@ -21,20 +23,24 @@ class DrawerOption extends StatelessWidget {
       mobile: OrientationLayout(
         landscape: DrawerOptionMobileLandscape(
           iconData: iconData,
+          route: route,
         ),
         portrait: DrawerOptionMobilePortrait(
           title: title,
           iconData: iconData,
+          route: route,
         ),
       ),
       tablet: OrientationLayout(
         landscape: DrawerOptionMobilePortrait(
           title: title,
           iconData: iconData,
+          route: route,
         ),
         portrait: DrawerOptionTabletPortrait(
           title: title,
           iconData: iconData,
+          route: route,
         ),
       ),
     );
