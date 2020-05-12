@@ -49,6 +49,17 @@ views/
     └── login_viewmodel.dart
 ```
 
+## Local Development
+
+There's a few things you need to add before you can start developing locally.
+
+After you pull down the repo, you wil need to have Flutter and Dart installed. Luckily, the Flutter team makes this easy: [Flutter Installation](https://flutter.dev/docs/get-started/install). 
+
+You will also have to install an IDE. The recommended IDE is Android Studio but you can also use other editors like VS Code. I normally use VS Code, but switching to Android Studio wasn't much of a problem. 
+
+After installing the necessary dependencies, you will have to create a Firebase account and create a new Firebase project (this is for those who are not on the development team for startuper). When you create your new Firebase project, you will be given instructions on how to add `google-services.json` to your codebase for each operating system: iOS and Android. Once you add these services, you should be good to go. 
+
+If you have any questions, please do not hesitate to contact me or file an issue.
 
 ## Dev Notes
 
