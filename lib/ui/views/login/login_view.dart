@@ -22,9 +22,22 @@ class LoginView extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Image.asset('assets/startuper.png'),
+                Text(
+                  'Hello',
+                  style: TextStyle(
+                    fontSize: 50,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                Text(
+                  'Sign in to your account',
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
                 verticalSpaceMedium,
                 InputField(
                   placeholder: 'Email',
@@ -38,8 +51,9 @@ class LoginView extends StatelessWidget {
                 ),
                 verticalSpaceSmall,
                 BusyButton(
-                  title: 'Login',
+                  title: 'Sign in',
                   busy: model.isBusy,
+                  color: primaryTextColor,
                   onPressed: () {
                     model.login(
                       email: emailController.text,
@@ -48,15 +62,21 @@ class LoginView extends StatelessWidget {
                   },
                 ),
                 verticalSpaceSmall,
-                TextLink(
-                  'Forgot your password?',
-                  textStyle: TextStyle(
-                    fontWeight: FontWeight.w300,
-                    color: primaryTextColor,
-                  ),
-                  onPressed: () {
-                    model.navigateToResetPassword();
-                  },
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    TextLink(
+                      'Forgot your password?',
+                      textStyle: TextStyle(
+                        fontWeight: FontWeight.w300,
+                        color: primaryTextColor,
+                      ),
+                      onPressed: () {
+                        model.navigateToResetPassword();
+                      },
+                    ),
+                  ],
                 ),
                 verticalSpaceSmall,
                 Row(
@@ -71,7 +91,7 @@ class LoginView extends StatelessWidget {
                       ),
                     ),
                     TextLink(
-                      'Sign up',
+                      'Sign up!',
                       textStyle: TextStyle(
                         color: primaryTextColor,
                       ),

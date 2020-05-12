@@ -32,7 +32,7 @@ class SignUpView extends StatelessWidget {
                   color: primaryTextColor,
                 ),
               ),
-              verticalSpaceLarge,
+              verticalSpaceMedium,
               InputField(
                 placeholder: 'Full Name',
                 controller: fullNameController,
@@ -52,6 +52,7 @@ class SignUpView extends StatelessWidget {
               verticalSpaceSmall,
               BusyButton(
                 title: 'Sign Up',
+                color: primaryTextColor,
                 busy: model.isBusy,
                 onPressed: () {
                   model.signUp(

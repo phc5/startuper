@@ -189,6 +189,14 @@ class SettingsMobileLandscape extends StatelessWidget {
                     children: <Widget>[
                       verticalSpaceMedium,
                       Text(
+                        'Settings',
+                        style: TextStyle(
+                          fontSize: 30,
+                          color: primaryTextColor,
+                        ),
+                      ),
+                      verticalSpaceMedium,
+                      Text(
                         'Account',
                         style: TextStyle(
                           fontSize: 13,

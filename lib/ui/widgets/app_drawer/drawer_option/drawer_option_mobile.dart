@@ -23,8 +23,12 @@ class DrawerOptionMobilePortrait extends StatelessWidget {
           children: <Widget>[
             FlatButton(
               onPressed: () {
-                Navigator.pop(context); // pop the
-                model.navigateTo(route);
+                var isCurrentRoute = model.isCurrentRoute(route, context);
+
+                Navigator.pop(context); // pop the app drawer
+                if (!isCurrentRoute) {
+                  model.navigateTo(route);
+                }
               },
               child: Row(
                 children: <Widget>[
@@ -68,7 +72,11 @@ class DrawerOptionMobileLandscape extends StatelessWidget {
           children: <Widget>[
             FlatButton(
               onPressed: () {
-                model.navigateTo(route);
+                var isCurrentRoute = model.isCurrentRoute(route, context);
+
+                if (!isCurrentRoute) {
+                  model.navigateTo(route);
+                }
               },
               child: Icon(iconData),
             ),
