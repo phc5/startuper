@@ -1,15 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ideabuilder/ui/shared/shared_styles.dart';
-import 'package:ideabuilder/ui/shared/ui_helpers.dart';
 import 'package:ideabuilder/ui/views/settings/settings_viewmodel.dart';
 import 'package:ideabuilder/ui/widgets/app_drawer/app_drawer.dart';
+import 'package:ideabuilder/ui/shared/ui_helpers.dart';
+import 'package:ideabuilder/ui/shared/shared_styles.dart';
 
-class SettingsMobilePortrait extends StatelessWidget {
+class SettingsTablet extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
   final SettingsViewModel _model;
-  SettingsMobilePortrait(SettingsViewModel model, {Key key})
+  SettingsTablet(SettingsViewModel model, {Key key})
       : _model = model,
         super(key: key);
 
@@ -25,7 +23,6 @@ class SettingsMobilePortrait extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      backgroundColor: primaryBackgroundColor,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
         child: ListView(

@@ -4,14 +4,15 @@ import 'package:ideabuilder/ui/shared/shared_styles.dart';
 
 import 'app_drawer.dart';
 
-class AppDrawerMobile extends StatelessWidget {
-  const AppDrawerMobile({Key key}) : super(key: key);
+class AppDrawerDesktop extends StatelessWidget {
+  const AppDrawerDesktop({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var orientation = MediaQuery.of(context).orientation;
+
     return Container(
-      width: 250,
+      width: 225,
       decoration: BoxDecoration(
         color: primaryTextColor,
         boxShadow: [
@@ -21,8 +22,11 @@ class AppDrawerMobile extends StatelessWidget {
           ),
         ],
       ),
-      child: ListView(
-        children: AppDrawer.getDrawerOptions(),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 25),
+        child: orientation == Orientation.portrait
+            ? Row(children: AppDrawer.getDrawerOptions())
+            : Column(children: AppDrawer.getDrawerOptions()),
       ),
     );
   }

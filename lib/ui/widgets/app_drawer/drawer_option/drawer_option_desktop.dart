@@ -1,25 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ideabuilder/ui/shared/shared_styles.dart';
 import 'package:stacked/stacked.dart';
 import 'package:ideabuilder/ui/widgets/app_drawer/drawer_option/drawer_option_viewmodel.dart';
+import 'package:ideabuilder/ui/shared/ui_helpers.dart';
 
-class DrawerOptionTabletPortrait extends StatelessWidget {
+class DrawerOptionDesktop extends StatelessWidget {
   final String title;
   final IconData iconData;
   final String route;
-  const DrawerOptionTabletPortrait(
-      {Key key, this.title, this.iconData, this.route})
+  const DrawerOptionDesktop({Key key, this.iconData, this.route, this.title})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var orientation = MediaQuery.of(context).orientation;
+
     return ViewModelBuilder<DrawerOptionViewModel>.nonReactive(
       viewModelBuilder: () => DrawerOptionViewModel(),
       builder: (context, model, child) => Container(
-        padding: EdgeInsets.only(left: 25),
-        height: 80,
-        child: Row(
+        height: 60,
+        alignment: Alignment.center,
+        child: Column(
           children: <Widget>[
             FlatButton(
               onPressed: () {
@@ -29,26 +30,29 @@ class DrawerOptionTabletPortrait extends StatelessWidget {
                   model.navigateTo(route);
                 }
               },
-              child: Row(
-                children: <Widget>[
-                  Icon(
-                    iconData,
-                    size: 25,
-                    color: Colors.white,
-                  ),
-                  SizedBox(
-                    width: 25,
-                  ),
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 21,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Row(
+                  children: <Widget>[
+                    Icon(
+                      iconData,
+                      size: 25,
                       color: Colors.white,
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      width: 25,
+                    ),
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 21,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            )
+            ),
           ],
         ),
       ),

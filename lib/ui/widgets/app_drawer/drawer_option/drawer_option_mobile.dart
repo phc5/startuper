@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ideabuilder/ui/shared/shared_styles.dart';
 import 'package:stacked/stacked.dart';
 import 'package:ideabuilder/ui/widgets/app_drawer/drawer_option/drawer_option_viewmodel.dart';
 import 'package:ideabuilder/ui/shared/ui_helpers.dart';
@@ -35,13 +36,17 @@ class DrawerOptionMobilePortrait extends StatelessWidget {
                   Icon(
                     iconData,
                     size: 25,
+                    color: Colors.white,
                   ),
                   SizedBox(
                     width: 25,
                   ),
                   Text(
                     title,
-                    style: TextStyle(fontSize: 21),
+                    style: TextStyle(
+                      fontSize: 21,
+                      color: Colors.white,
+                    ),
                   ),
                 ],
               ),
@@ -78,7 +83,10 @@ class DrawerOptionMobileLandscape extends StatelessWidget {
                   model.navigateTo(route);
                 }
               },
-              child: Icon(iconData),
+              child: Icon(
+                iconData,
+                color: Colors.white,
+              ),
             ),
           ],
         ),

@@ -37,26 +37,3 @@ class HomeMobilePortrait extends StatelessWidget {
     );
   }
 }
-
-class HomeMobileLandscape extends StatelessWidget {
-  final HomeViewModel _model;
-  HomeMobileLandscape(HomeViewModel model, {Key key})
-      : _model = model,
-        super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Row(
-        children: <Widget>[
-          AppDrawer(),
-          Expanded(
-            child: Center(
-              child: Text('${_model.counter}'),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}

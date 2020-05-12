@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ideabuilder/ui/shared/shared_styles.dart';
 
 import 'app_drawer.dart';
 
@@ -9,32 +10,9 @@ class AppDrawerTabletPortrait extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 130,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 16,
-            color: Colors.black12,
-          ),
-        ],
-      ),
-      child: Row(
-        children: AppDrawer.getDrawerOptions(),
-      ),
-    );
-  }
-}
-
-class AppDrawerTabletLandscape extends StatelessWidget {
-  const AppDrawerTabletLandscape({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
       width: 250,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: primaryTextColor,
         boxShadow: [
           BoxShadow(
             blurRadius: 16,
@@ -42,7 +20,9 @@ class AppDrawerTabletLandscape extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(children: AppDrawer.getDrawerOptions()),
+      child: ListView(
+        children: AppDrawer.getDrawerOptions(),
+      ),
     );
   }
 }
