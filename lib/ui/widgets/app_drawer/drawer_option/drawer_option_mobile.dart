@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:ideabuilder/ui/widgets/app_drawer/drawer_option/drawer_option_viewmodel.dart';
+import 'package:ideabuilder/ui/shared/ui_helpers.dart';
 
 class DrawerOptionMobilePortrait extends StatelessWidget {
   final String title;
@@ -62,8 +63,15 @@ class DrawerOptionMobileLandscape extends StatelessWidget {
         height: 70,
         alignment: Alignment.center,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            Icon(iconData),
+            FlatButton(
+              onPressed: () {
+                model.navigateTo(route);
+              },
+              child: Icon(iconData),
+            ),
           ],
         ),
       ),

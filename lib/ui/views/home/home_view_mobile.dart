@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ideabuilder/ui/shared/shared_styles.dart';
 import 'package:ideabuilder/ui/views/home/home_viewmodel.dart';
 import 'package:ideabuilder/ui/widgets/app_drawer/app_drawer.dart';
 
@@ -15,6 +16,13 @@ class HomeMobilePortrait extends StatelessWidget {
     return Scaffold(
       key: _scaffoldKey,
       drawer: AppDrawer(),
+      appBar: AppBar(
+        backgroundColor: primaryTextColor,
+        title: Text(
+          'Home',
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
@@ -23,15 +31,6 @@ class HomeMobilePortrait extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.fromLTRB(14, 20, 0, 0),
-            child: IconButton(
-              icon: Icon(Icons.menu, size: 30),
-              onPressed: () {
-                _scaffoldKey.currentState.openDrawer();
-              },
-            ),
-          ),
           Text('${_model.counter}'),
         ],
       ),

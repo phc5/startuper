@@ -7,7 +7,7 @@ import 'app/router.gr.dart';
 
 void main() {
   setupLocator();
-  runApp(DevicePreview(builder: (context) => MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      builder: DevicePreview.appBuilder,
       title: 'Flutter Demo',
       initialRoute: Routes.startupViewRoute,
       onGenerateRoute: Router().onGenerateRoute,
