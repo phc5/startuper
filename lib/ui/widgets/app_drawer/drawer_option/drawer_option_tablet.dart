@@ -25,6 +25,7 @@ class DrawerOptionTabletPortrait extends StatelessWidget {
               onPressed: () {
                 var isCurrentRoute = model.isCurrentRoute(route, context);
 
+                Navigator.pop(context); // pop the app drawer
                 if (!isCurrentRoute) {
                   model.navigateTo(route);
                 }
