@@ -15,7 +15,7 @@ class NoteText extends StatelessWidget {
       style: TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.normal,
-        color: primaryTextColor,
+        color: color,
       ),
     );
   }

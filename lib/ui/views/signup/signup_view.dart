@@ -17,7 +17,6 @@ class SignUpView extends StatelessWidget {
     return ViewModelBuilder<SignUpViewModel>.reactive(
       viewModelBuilder: () => SignUpViewModel(),
       builder: (context, model, child) => Scaffold(
-        backgroundColor: primaryBackgroundColor,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 50.0),
           child: Column(
@@ -29,7 +28,6 @@ class SignUpView extends StatelessWidget {
                 'Sign Up',
                 style: TextStyle(
                   fontSize: 38,
-                  color: primaryTextColor,
                 ),
               ),
               verticalSpaceMedium,
@@ -52,7 +50,6 @@ class SignUpView extends StatelessWidget {
               verticalSpaceSmall,
               BusyButton(
                 title: 'Sign Up',
-                color: primaryTextColor,
                 busy: model.isBusy,
                 onPressed: () {
                   model.signUp(
@@ -70,15 +67,11 @@ class SignUpView extends StatelessWidget {
                   Text(
                     'Already have an account? ',
                     style: TextStyle(
-                      color: primaryTextColor,
                       fontWeight: FontWeight.w300,
                     ),
                   ),
                   TextLink(
                     'Log in',
-                    textStyle: TextStyle(
-                      color: primaryTextColor,
-                    ),
                     onPressed: () {
                       model.navigateToLogin();
                     },

@@ -13,7 +13,6 @@ class StartupView extends StatelessWidget {
       onModelReady: (model) => model.handleStartUp(),
       viewModelBuilder: () => StartupViewModel(),
       builder: (context, model, child) => Scaffold(
-        backgroundColor: primaryBackgroundColor,
         body: Center(
             child: Column(
           mainAxisSize: MainAxisSize.min,

@@ -14,7 +14,6 @@ class DeleteAccountView extends StatelessWidget {
     return ViewModelBuilder<DeleteAccountViewModel>.reactive(
       viewModelBuilder: () => DeleteAccountViewModel(),
       builder: (context, model, child) => Scaffold(
-        backgroundColor: primaryBackgroundColor,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 50.0),
           child: Column(
@@ -26,7 +25,6 @@ class DeleteAccountView extends StatelessWidget {
                 'Account Deactivation',
                 style: TextStyle(
                   fontSize: 38,
-                  color: primaryTextColor,
                 ),
               ),
               verticalSpaceMedium,
@@ -57,9 +55,6 @@ class DeleteAccountView extends StatelessWidget {
                   FlatButton(
                     child: Text(
                       'Cancel',
-                      style: TextStyle(
-                        color: primaryTextColor,
-                      ),
                     ),
                     onPressed: () {
                       Navigator.of(context).pop();

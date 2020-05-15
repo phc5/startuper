@@ -15,7 +15,6 @@ class ResetEmailView extends StatelessWidget {
     return ViewModelBuilder<ResetEmailViewModel>.reactive(
       viewModelBuilder: () => ResetEmailViewModel(),
       builder: (context, model, child) => Scaffold(
-        backgroundColor: primaryBackgroundColor,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 50.0),
           child: Column(
@@ -27,7 +26,6 @@ class ResetEmailView extends StatelessWidget {
                 'Change Email',
                 style: TextStyle(
                   fontSize: 38,
-                  color: primaryTextColor,
                 ),
               ),
               verticalSpaceMedium,
@@ -55,9 +53,6 @@ class ResetEmailView extends StatelessWidget {
                   FlatButton(
                     child: Text(
                       'Cancel',
-                      style: TextStyle(
-                        color: primaryTextColor,
-                      ),
                     ),
                     onPressed: () {
                       Navigator.of(context).pop();
@@ -65,7 +60,6 @@ class ResetEmailView extends StatelessWidget {
                   ),
                   BusyButton(
                     title: 'Confirm',
-                    color: primaryTextColor,
                     busy: model.isBusy,
                     onPressed: () {
                       model.changeEmail(emailController.text,

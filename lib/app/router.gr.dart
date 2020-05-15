@@ -10,26 +10,45 @@ import 'package:auto_route/auto_route.dart';
 import 'package:ideabuilder/ui/views/startup/startup_view.dart';
 import 'package:ideabuilder/ui/views/signup/signup_view.dart';
 import 'package:ideabuilder/ui/views/login/login_view.dart';
+import 'package:ideabuilder/ui/views/app_shell/app_shell_view.dart';
 import 'package:ideabuilder/ui/views/home/home_view.dart';
+import 'package:ideabuilder/ui/views/app_shell/app_shell_viewmodel.dart';
 import 'package:ideabuilder/ui/views/reset_email/reset_email_view.dart';
 import 'package:ideabuilder/ui/views/reset_password/reset_password_view.dart';
 import 'package:ideabuilder/ui/views/delete_account/delete_account_view.dart';
 import 'package:ideabuilder/ui/views/settings/settings_view.dart';
+import 'package:ideabuilder/ui/views/settings/change_theme/change_theme_view.dart';
 
 abstract class Routes {
   static const startupViewRoute = '/';
   static const signUpViewRoute = '/sign-up-view-route';
   static const loginViewRoute = '/login-view-route';
+  static const appShellViewRoute = '/app-shell-view-route';
   static const homeViewRoute = '/home-view-route';
   static const resetEmailViewRoute = '/reset-email-view-route';
   static const resetPasswordViewRoute = '/reset-password-view-route';
   static const deleteAccountViewRoute = '/delete-account-view-route';
   static const settingsViewRoute = '/settings-view-route';
+  static const changeThemeViewRoute = '/change-theme-view-route';
+  static const all = {
+    startupViewRoute,
+    signUpViewRoute,
+    loginViewRoute,
+    appShellViewRoute,
+    homeViewRoute,
+    resetEmailViewRoute,
+    resetPasswordViewRoute,
+    deleteAccountViewRoute,
+    settingsViewRoute,
+    changeThemeViewRoute,
+  };
 }
 
 class Router extends RouterBase {
-  //This will probably be removed in future versions
-  //you should call ExtendedNavigator.ofRouter<Router>() directly
+  @override
+  Set<String> get allRoutes => Routes.all;
+
+  @Deprecated('call ExtendedNavigator.ofRouter<Router>() directly')
   static ExtendedNavigatorState get navigator =>
       ExtendedNavigator.ofRouter<Router>();
 
@@ -52,13 +71,20 @@ class Router extends RouterBase {
           builder: (context) => LoginView(),
           settings: settings,
         );
+      case Routes.appShellViewRoute:
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => AppShellView(),
+          settings: settings,
+        );
       case Routes.homeViewRoute:
         if (hasInvalidArgs<HomeViewArguments>(args)) {
           return misTypedArgsRoute<HomeViewArguments>(args);
         }
         final typedArgs = args as HomeViewArguments ?? HomeViewArguments();
         return MaterialPageRoute<dynamic>(
-          builder: (context) => HomeView(key: typedArgs.key),
+          builder: (context) => HomeView(
+              key: typedArgs.key,
+              appShellViewModel: typedArgs.appShellViewModel),
           settings: settings,
         );
       case Routes.resetEmailViewRoute:
@@ -83,7 +109,21 @@ class Router extends RouterBase {
         final typedArgs =
             args as SettingsViewArguments ?? SettingsViewArguments();
         return MaterialPageRoute<dynamic>(
-          builder: (context) => SettingsView(key: typedArgs.key),
+          builder: (context) => SettingsView(
+              key: typedArgs.key,
+              appShellViewModel: typedArgs.appShellViewModel),
+          settings: settings,
+        );
+      case Routes.changeThemeViewRoute:
+        if (hasInvalidArgs<ChangeThemeViewArguments>(args)) {
+          return misTypedArgsRoute<ChangeThemeViewArguments>(args);
+        }
+        final typedArgs =
+            args as ChangeThemeViewArguments ?? ChangeThemeViewArguments();
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => ChangeThemeView(
+              key: typedArgs.key,
+              appShellViewModel: typedArgs.appShellViewModel),
           settings: settings,
         );
       default:
@@ -92,18 +132,27 @@ class Router extends RouterBase {
   }
 }
 
-//**************************************************************************
+// *************************************************************************
 // Arguments holder classes
-//***************************************************************************
+// **************************************************************************
 
 //HomeView arguments holder class
 class HomeViewArguments {
   final Key key;
-  HomeViewArguments({this.key});
+  final AppShellViewModel appShellViewModel;
+  HomeViewArguments({this.key, this.appShellViewModel});
 }
 
 //SettingsView arguments holder class
 class SettingsViewArguments {
   final Key key;
-  SettingsViewArguments({this.key});
+  final AppShellViewModel appShellViewModel;
+  SettingsViewArguments({this.key, this.appShellViewModel});
+}
+
+//ChangeThemeView arguments holder class
+class ChangeThemeViewArguments {
+  final Key key;
+  final AppShellViewModel appShellViewModel;
+  ChangeThemeViewArguments({this.key, this.appShellViewModel});
 }

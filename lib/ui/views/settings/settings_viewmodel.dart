@@ -1,3 +1,5 @@
+import 'package:ideabuilder/services/theme_manager.dart';
+import 'package:ideabuilder/ui/shared/theme.dart';
 import 'package:stacked/stacked.dart';
 import 'package:ideabuilder/services/authentication.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -9,24 +11,11 @@ class SettingsViewModel extends BaseViewModel {
       locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();
 
-  final settingsPageIndex = 2;
-
-  String _title = 'Settings View';
-  String get title => '$_title\n Counter: $counter';
-
-  int _counter = 0;
-  int get counter => _counter;
-
   String get user => _authenticationService?.currentUser?.fullName;
-
-  void updateCounter() {
-    _counter++;
-    notifyListeners();
-  }
 
   void logout() {
     _authenticationService.logOut();
-    _navigationService.navigateTo(Routes.loginViewRoute);
+    _navigationService.replaceWith(Routes.loginViewRoute);
   }
 
   void changeEmail() {
@@ -39,5 +28,9 @@ class SettingsViewModel extends BaseViewModel {
 
   void deleteAccount() {
     _navigationService.navigateTo(Routes.deleteAccountViewRoute);
+  }
+
+  void changeTheme() {
+    _navigationService.navigateTo(Routes.changeThemeViewRoute);
   }
 }

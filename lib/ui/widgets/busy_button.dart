@@ -10,14 +10,13 @@ class BusyButton extends StatefulWidget {
   final Color color;
   final Color textColor;
 
-  const BusyButton({
-    @required this.title,
-    this.busy = false,
-    @required this.onPressed,
-    this.enabled = true,
-    this.color = const Color.fromRGBO(145, 232, 161, 1.0),
-    this.textColor = primaryBackgroundColor,
-  });
+  const BusyButton(
+      {@required this.title,
+      this.busy = false,
+      @required this.onPressed,
+      this.enabled = true,
+      this.color,
+      this.textColor});
 
   @override
   _BusyButtonState createState() => _BusyButtonState();
@@ -38,7 +37,9 @@ class _BusyButtonState extends State<BusyButton> {
               horizontal: widget.busy ? 10 : 15,
               vertical: widget.busy ? 10 : 10),
           decoration: BoxDecoration(
-            color: widget.enabled ? widget.color : Colors.grey[300],
+            color: widget.enabled
+                ? Theme.of(context).buttonColor
+                : Colors.grey[300],
             borderRadius: BorderRadius.circular(5),
           ),
           child: !widget.busy

@@ -14,7 +14,6 @@ class ResetPasswordView extends StatelessWidget {
     return ViewModelBuilder<ResetPasswordViewModel>.reactive(
       viewModelBuilder: () => ResetPasswordViewModel(),
       builder: (context, model, child) => Scaffold(
-        backgroundColor: primaryBackgroundColor,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 50.0),
           child: Column(
@@ -26,7 +25,6 @@ class ResetPasswordView extends StatelessWidget {
                 'Change Password',
                 style: TextStyle(
                   fontSize: 38,
-                  color: primaryTextColor,
                 ),
               ),
               verticalSpaceMedium,
@@ -48,9 +46,6 @@ class ResetPasswordView extends StatelessWidget {
                   FlatButton(
                     child: Text(
                       'Cancel',
-                      style: TextStyle(
-                        color: primaryTextColor,
-                      ),
                     ),
                     onPressed: () {
                       Navigator.of(context).pop();
@@ -58,7 +53,6 @@ class ResetPasswordView extends StatelessWidget {
                   ),
                   BusyButton(
                     title: 'Confirm',
-                    color: primaryTextColor,
                     busy: model.isBusy,
                     onPressed: () {
                       model.resetPassword(

@@ -16,94 +16,88 @@ class LoginView extends StatelessWidget {
     return ViewModelBuilder<LoginViewModel>.reactive(
       viewModelBuilder: () => LoginViewModel(),
       builder: (context, model, child) => Scaffold(
-          backgroundColor: primaryBackgroundColor,
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  'Hello',
-                  style: TextStyle(
-                    fontSize: 50,
-                    fontWeight: FontWeight.w500,
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 50),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'Hello',
+                style: TextStyle(
+                  fontSize: 50,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              Text(
+                'Sign in to your account',
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+              verticalSpaceMedium,
+              InputField(
+                placeholder: 'Email',
+                controller: emailController,
+              ),
+              verticalSpaceSmall,
+              InputField(
+                placeholder: 'Password',
+                password: true,
+                controller: passwordController,
+              ),
+              verticalSpaceSmall,
+              BusyButton(
+                title: 'Sign in',
+                busy: model.isBusy,
+                onPressed: () {
+                  model.login(
+                    email: emailController.text,
+                    password: passwordController.text,
+                  );
+                },
+              ),
+              verticalSpaceSmall,
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  TextLink(
+                    'Forgot your password?',
+                    textStyle: TextStyle(
+                      fontWeight: FontWeight.w300,
+                    ),
+                    onPressed: () {
+                      model.navigateToResetPassword();
+                    },
                   ),
-                ),
-                Text(
-                  'Sign in to your account',
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.w300,
+                ],
+              ),
+              verticalSpaceSmall,
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Don\'t have an account? ',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w300,
+                    ),
                   ),
-                ),
-                verticalSpaceMedium,
-                InputField(
-                  placeholder: 'Email',
-                  controller: emailController,
-                ),
-                verticalSpaceSmall,
-                InputField(
-                  placeholder: 'Password',
-                  password: true,
-                  controller: passwordController,
-                ),
-                verticalSpaceSmall,
-                BusyButton(
-                  title: 'Sign in',
-                  busy: model.isBusy,
-                  color: primaryTextColor,
-                  onPressed: () {
-                    model.login(
-                      email: emailController.text,
-                      password: passwordController.text,
-                    );
-                  },
-                ),
-                verticalSpaceSmall,
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    TextLink(
-                      'Forgot your password?',
-                      textStyle: TextStyle(
-                        fontWeight: FontWeight.w300,
-                        color: primaryTextColor,
-                      ),
-                      onPressed: () {
-                        model.navigateToResetPassword();
-                      },
-                    ),
-                  ],
-                ),
-                verticalSpaceSmall,
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'Don\'t have an account? ',
-                      style: TextStyle(
-                        color: primaryTextColor,
-                        fontWeight: FontWeight.w300,
-                      ),
-                    ),
-                    TextLink(
-                      'Sign up!',
-                      textStyle: TextStyle(
-                        color: primaryTextColor,
-                      ),
-                      onPressed: () {
-                        model.navigateToSignUp();
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          )),
+                  TextLink(
+                    'Sign up!',
+                    onPressed: () {
+                      model.navigateToSignUp();
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
