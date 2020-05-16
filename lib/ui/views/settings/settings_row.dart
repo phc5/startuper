@@ -31,7 +31,6 @@ class SettingsRow extends StatelessWidget {
                 Text(
                   '$title',
                   style: TextStyle(
-                    fontWeight: FontWeight.w600,
                     color: _color,
                   ),
                 ),

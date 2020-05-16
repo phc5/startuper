@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:ideabuilder/services/theme_manager.dart';
 import 'package:ideabuilder/ui/shared/ui_helpers.dart';
 import 'package:ideabuilder/ui/views/app_shell/app_shell_viewmodel.dart';
+import 'package:ideabuilder/ui/views/settings/settings_header.dart';
 import 'package:ideabuilder/ui/views/settings/settings_row.dart';
 import 'package:ideabuilder/ui/widgets/responsive_builder.dart';
 import 'package:provider/provider.dart';
@@ -25,53 +26,15 @@ class SettingsView extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 16),
               children: <Widget>[
                 /// GENERAL
-                Text(
-                  'General',
-                  style: TextStyle(
-                    fontSize: 13,
-                  ),
-                ),
+                SettingsHeader('General'),
                 verticalSpaceSmall,
                 spacedDivider,
-                InkWell(
-                  onTap: () {
-                    model.changeTheme();
-                  },
-                  child: SizedBox(
-                    height: 50,
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(
-                              'Themes',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              size: 12,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                SettingsRow('Themes', model.changeTheme),
                 spacedDivider,
                 verticalSpaceLarge,
 
                 /// ACCOUNT
-                Text(
-                  'Account',
-                  style: TextStyle(
-                    fontSize: 13,
-                  ),
-                ),
+                SettingsHeader('Account'),
                 verticalSpaceSmall,
                 spacedDivider,
                 SettingsRow('Change Email', model.changeEmail),
@@ -86,6 +49,19 @@ class SettingsView extends StatelessWidget {
                   color: Colors.red[400],
                 ),
                 spacedDivider,
+                verticalSpaceLarge,
+
+                /// Help
+                SettingsHeader('Help'),
+                verticalSpaceSmall,
+                spacedDivider,
+                SettingsRow('Support', model.changeEmail),
+                spacedDivider,
+                SettingsRow('Privacy', model.changePassword),
+                spacedDivider,
+                SettingsRow('FAQ', model.logout),
+                spacedDivider,
+                verticalSpaceLarge,
               ],
             ),
           ),

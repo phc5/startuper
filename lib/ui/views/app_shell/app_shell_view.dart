@@ -80,7 +80,6 @@ class AppShellView extends StatelessWidget {
 
   Widget menu(context, AppShellViewModel model) {
     return SafeArea(
-      minimum: const EdgeInsets.only(left: 16.0, top: 48),
       child: Align(
         alignment: Alignment.topLeft,
         child: Column(
@@ -88,29 +87,39 @@ class AppShellView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            InkWell(
-              child: Text(
-                "Home",
-                style: TextStyle(
-                  fontSize: 22,
-                ),
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0, top: 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  InkWell(
+                    child: Text(
+                      "Home",
+                      style: TextStyle(
+                        fontSize: 22,
+                      ),
+                    ),
+                    onTap: () {
+                      model.navigateToIndex(0);
+                    },
+                  ),
+                  SizedBox(height: 24),
+                  InkWell(
+                    child: Text(
+                      "Settings",
+                      style: TextStyle(
+                        fontSize: 22,
+                      ),
+                    ),
+                    onTap: () {
+                      model.navigateToIndex(1);
+                    },
+                  ),
+                  SizedBox(height: 24),
+                ],
               ),
-              onTap: () {
-                model.navigateToIndex(0);
-              },
             ),
-            SizedBox(height: 16),
-            InkWell(
-              child: Text(
-                "Settings",
-                style: TextStyle(
-                  fontSize: 22,
-                ),
-              ),
-              onTap: () {
-                model.navigateToIndex(1);
-              },
-            )
+            spacedDivider,
           ],
         ),
       ),
