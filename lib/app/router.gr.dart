@@ -13,6 +13,7 @@ import 'package:ideabuilder/ui/views/login/login_view.dart';
 import 'package:ideabuilder/ui/views/app_shell/app_shell_view.dart';
 import 'package:ideabuilder/ui/views/home/home_view.dart';
 import 'package:ideabuilder/ui/views/app_shell/app_shell_viewmodel.dart';
+import 'package:ideabuilder/ui/views/home/create_project/create_project_view.dart';
 import 'package:ideabuilder/ui/views/reset_email/reset_email_view.dart';
 import 'package:ideabuilder/ui/views/reset_password/reset_password_view.dart';
 import 'package:ideabuilder/ui/views/delete_account/delete_account_view.dart';
@@ -25,6 +26,7 @@ abstract class Routes {
   static const loginViewRoute = '/login-view-route';
   static const appShellViewRoute = '/app-shell-view-route';
   static const homeViewRoute = '/home-view-route';
+  static const createProjectViewRoute = '/create-project-view-route';
   static const resetEmailViewRoute = '/reset-email-view-route';
   static const resetPasswordViewRoute = '/reset-password-view-route';
   static const deleteAccountViewRoute = '/delete-account-view-route';
@@ -36,6 +38,7 @@ abstract class Routes {
     loginViewRoute,
     appShellViewRoute,
     homeViewRoute,
+    createProjectViewRoute,
     resetEmailViewRoute,
     resetPasswordViewRoute,
     deleteAccountViewRoute,
@@ -85,6 +88,11 @@ class Router extends RouterBase {
           builder: (context) => HomeView(
               key: typedArgs.key,
               appShellViewModel: typedArgs.appShellViewModel),
+          settings: settings,
+        );
+      case Routes.createProjectViewRoute:
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => CreateProjectView(),
           settings: settings,
         );
       case Routes.resetEmailViewRoute:

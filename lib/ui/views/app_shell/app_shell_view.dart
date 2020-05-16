@@ -55,7 +55,6 @@ class AppShellView extends StatelessWidget {
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
-                              print(model.menuCollapsed);
                               if (!model.menuCollapsed) {
                                 model.toggleMenu();
                               }

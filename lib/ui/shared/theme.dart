@@ -8,6 +8,7 @@ final darkTheme = ThemeData(
   accentColor: Colors.white,
   accentIconTheme: IconThemeData(color: Colors.black),
   dividerColor: Colors.black12,
+  textSelectionColor: Colors.grey,
 );
 
 final lightTheme = ThemeData(

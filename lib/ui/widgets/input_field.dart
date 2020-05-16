@@ -20,6 +20,7 @@ class InputField extends StatefulWidget {
   final String additionalNote;
   final Function(String) onChanged;
   final TextInputFormatter formatter;
+  final double fieldHeight;
 
   InputField(
       {@required this.controller,
@@ -35,7 +36,8 @@ class InputField extends StatefulWidget {
       this.textInputType = TextInputType.text,
       this.password = false,
       this.isReadOnly = false,
-      this.smallVersion = false});
+      this.smallVersion = false,
+      this.fieldHeight = 55});
 
   @override
   _InputFieldState createState() => _InputFieldState();
@@ -43,7 +45,6 @@ class InputField extends StatefulWidget {
 
 class _InputFieldState extends State<InputField> {
   bool isPassword;
-  double fieldHeight = 55;
 
   @override
   void initState() {
@@ -57,7 +58,7 @@ class _InputFieldState extends State<InputField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
-          height: widget.smallVersion ? 40 : fieldHeight,
+          height: widget.smallVersion ? 40 : widget.fieldHeight,
           alignment: Alignment.centerLeft,
           padding: fieldPadding,
           decoration:
@@ -89,6 +90,9 @@ class _InputFieldState extends State<InputField> {
                   readOnly: widget.isReadOnly,
                   decoration: InputDecoration.collapsed(
                     hintText: widget.placeholder,
+                    hintStyle: TextStyle(
+                      color: Colors.black,
+                    ),
                   ),
                 ),
               ),
